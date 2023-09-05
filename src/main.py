@@ -2,9 +2,7 @@ from fastapi import FastAPI
 
 
 app = FastAPI(
-    title="MultiTasker",
+    title="MessageSender",
     version="0.0.1",
     description="Test task for Fabrique Studio",
-
 )
-app.include_router(router)
