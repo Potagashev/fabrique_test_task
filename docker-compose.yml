@@ -2,7 +2,6 @@ version: "3.11"
 services:
   web:
     build: .
-    command: bash -c "alembic upgrade head && /start-reload.sh"
     ports:
       - "80:80"
     volumes:
@@ -13,12 +12,12 @@ services:
       - MODULE_NAME=src.main
     env_file:
       - .env
+
   db:
     image: postgres:15
-    environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file:
+      - .env
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
